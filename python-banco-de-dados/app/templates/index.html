@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almoxarifado</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+   <nav>
+       <form action="{{ url_for('search') }}" method="POST" class="form-busca">
+           <input type="text" name="query" placeholder="Buscar produtos" value="{{ query if query else '' }}">
+           <button type="submit" style="padding: 10px 15px; border-radius: 15px;">Buscar</button>
+       </form>
+       <a href="/" style="padding: 10px 15px; border-radius: 15px; background-color: #4CAF50; color: white; text-decoration: none; margin-left: 10px;">
+           Voltar ao Padrão
+       </a>
+       <button id="add-product-btn" onclick="openAddModal()" style="padding: 10px 15px; border-radius: 15px; background-color: #28a745; color: white; border: none; cursor: pointer; margin-left: 10px;">
+           Adicionar Produto
+       </button>
+       <a href="http://localhost:5173/" style="padding: 10px 15px; border-radius: 15px; background-color: #dc3545; color: white; text-decoration: none; margin-left: 10px;">
+           Voltar
+       </a>
+       <a href="{{ url_for('logout') }}" style="padding: 10px 15px; border-radius: 15px; background-color: #dc3545; color: white; text-decoration: none; margin-left: 10px;">
+           Sair
+       </a>
+   </nav>
+
+    <div class="product-list">
+        {% for product in products %}
+        <div class="product-card">
+            <img src="{{ product[5] }}" alt="Imagem do Produto">
+            <div class="product-info">
+                <h3 class="product-name">{{ product[1] }}</h3>
+                <p class="product-id">ID: {{ product[0] }}</p>
+                <p class="product-serial">Número de Série: {{ product[3] }}</p>
+                <p class="product-quantity">Quantidade: {{ product[2] }}</p>
+                <p class="product-expiration">Data de Expiração: {{ product[4] }}</p>
+                <form action="/delete_product/{{ product[0] }}" method="POST" style="display: inline;">
+                    <button type="submit" class="delete-btn">Excluir</button>
+                </form>
+                <button 
+    class="edit-btn" 
+    data-id="{{ product[0] }}" 
+    data-name="{{ product[1] }}" 
+    data-quantity="{{ product[2] }}" 
+    data-serial="{{ product[3] }}" 
+    data-expiration="{{ product[4] }}" 
+    onclick="handleEditButtonClick(this)">Editar</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>  
+    
+    <!-- Modal de Adicionar Produto -->
+    <div id="add-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeAddModal()">&times;</span>
+            <h2>Adicionar Produto</h2>
+            <form action="/add_product" method="POST" enctype="multipart/form-data">
+                <label for="name">Nome do Produto:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="quantity">Quantidade:</label>
+                <input type="number" id="quantity" name="quantity" required>
+
+                <label for="serial_number">Número de Série:</label>
+                <input type="text" id="serial_number" name="serial_number" required>
+
+                <label for="expiration_date">Data de Expiração:</label>
+                <input type="date" id="expiration_date" name="expiration_date" required>
+
+                <label for="image">Imagem do Produto:</label>
+                <input type="file" id="image" name="image" accept="image/*" required>
+
+                <button type="submit">Adicionar Produto</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Editar Produto -->
+<div id="edit-modal" class="edit-modal-popup">
+    <div class="edit-modal-popup-content">
+        <span class="edit-close-btn" onclick="closeEditModal()">&times;</span>
+        <h2 style="text-align:center;">Editar Produto</h2>
+        <form id="edit-form" method="POST" enctype="multipart/form-data">
+            <label for="edit-name">Nome do Produto:</label>
+            <input type="text" id="edit-name" name="name" required>
+            <label for="edit-quantity">Quantidade:</label>
+            <input type="number" id="edit-quantity" name="quantity" required>
+            <label for="edit-serial_number">Número de Série:</label>
+            <input type="text" id="edit-serial_number" name="serial_number" required>
+            <label for="edit-expiration_date">Data de Expiração:</label>
+            <input type="date" id="edit-expiration_date" name="expiration_date" required>
+            <label for="edit-image">Imagem do Produto:</label>
+            <input type="file" id="edit-image" name="image" accept="image/*">
+            <button type="submit" style="width:100%;margin-top:16px;">Salvar Alterações</button>
+        </form>
+    </div>
+</div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
