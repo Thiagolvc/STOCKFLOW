@@ -1,0 +1,650 @@
+/* ==========================
+   GLOBAL E PADRÃO DO SITE
+   Usado em todas as páginas
+========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+*{
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+/* ==========================
+   NAVBAR (index.html, produtos, etc)
+========================== */
+nav {
+    background-color: #333;
+    color: white;
+    padding: 30px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav form input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    width: 200px;
+}
+
+nav form button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+nav form button:hover {
+    background-color: #0056b3;
+}
+
+nav a {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #45a049;
+}
+
+/* ==========================
+   BOTÕES GERAIS
+========================== */
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.form-busca{
+    width: 20%;
+}
+
+/* ==========================
+   LISTA DE PRODUTOS (index.html)
+========================== */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+    padding: 10px;
+}
+
+.product-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ==========================
+   MODAL DE PRODUTO (index.html)
+========================== */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #ffffff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    position: relative;
+    font-family: Arial, sans-serif;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+}
+
+.modal-content label {
+    display: block;
+    margin-top: 0px;
+    font-weight: bold;
+    color: #555;
+}
+
+.modal-content input[type="text"],
+.modal-content input[type="number"],
+.modal-content input[type="date"],
+.modal-content input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.modal-content button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #45a049;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #000;
+}
+
+.delete-btn {
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 45%;
+}
+
+/* ==========================
+   MODAL DE EDIÇÃO DE PRODUTO (index.html)
+========================== */
+.edit-modal-popup {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.45);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+.edit-modal-popup.active {
+    display: flex;
+}
+.edit-modal-popup-content {
+    background: #fff;
+    padding: 32px 28px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    margin: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.edit-modal-popup-content label {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+.edit-modal-popup-content input[type="text"],
+.edit-modal-popup-content input[type="number"],
+.edit-modal-popup-content input[type="date"],
+.edit-modal-popup-content input[type="file"] {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+.edit-modal-popup-content button[type="submit"] {
+    background: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.edit-modal-popup-content button[type="submit"]:hover {
+    background: #218838;
+}
+.edit-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    font-size: 1.5rem;
+    color: #888;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.edit-btn {
+    background-color: blue;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 45%;
+}
+
+/* ==========================
+   FORMULÁRIO DE PRODUTO (index.html)
+========================== */
+.form-container {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form-container label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #0056b3;
+}
+
+/* ==========================
+   ERRO (index.html)
+========================== */
+.error {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* ==========================
+   POPUP DE CONFIRMAÇÃO (login.html, index.html)
+========================== */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.popup-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: red;
+    font-weight: bold;
+}
+
+.popup-content button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.popup-content button:hover {
+    background-color: #0056b3;
+}
+
+/* ==========================
+   LOGIN E CADASTRO (login.html, componente LoginRegister.jsx)
+========================== */
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.auth-box {
+    background: #fff;
+    padding: 40px 32px;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(60, 60, 120, 0.18);
+    width: 350px;
+    margin: 0 auto 24px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    transition: box-shadow 0.2s;
+}
+
+.auth-box h2 {
+    text-align: center;
+    color: black;
+    font-weight: 700;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.auth-box .form-group label {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 6px;
+    display: block;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.auth-box .form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #f9fafb;
+    transition: border 0.2s;
+    outline: none;
+    margin-top: 4px;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.auth-box .form-group input:focus {
+    border-color: #3182ce;
+    background: #fff;
+}
+
+.auth-box button[type="submit"] {
+    background: linear-gradient(90deg, #3182ce 0%, #00b4d8 100%);
+    color: #fff;
+    border: none;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 2px 8px rgba(49, 130, 206, 0.08);
+    width: 100%;
+    margin-top: 8px;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.auth-box button[type="submit"]:hover {
+    background: linear-gradient(90deg, #2563eb 0%, #0096c7 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+.auth-box .switch-btn {
+    background: none;
+    color: #3182ce;
+    text-decoration: underline;
+    border: none;
+    padding: 6px 0 0 0;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    font-family: 'Poppins', Arial, sans-serif;
+    align-self: center;
+    width: 100%;
+    
+}
+
+.auth-box .switch-btn:hover {
+    color: #2563eb;
+}
+
+@media (max-width: 500px) {
+    .auth-box {
+        width: 95vw;
+        padding: 24px 8px;
+    }
+}
+
+/* ==========================
+   LABELS E INPUTS GERAIS
+========================== */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* ==========================
+   BOTÕES GERAIS (sobrescreve para outros contextos)
+========================== */
+button {
+    width: 30%;
+    padding: 20px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* ==========================
+   BOTÃO DE TROCA DE LOGIN/CADASTRO
+========================== */
+.switch-btn {
+    background: none;
+    color: #3498db;
+    text-decoration: underline;
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.switch-btn:hover {
+    background: none;
+    color: #2980b9;
+}
+
+/* ==========================
+   MODAL DE CONFIRMAÇÃO (login.html)
+========================== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#closeModal {
+    float: right;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+#modalButton {
+    margin-top: 20px;
+}
+
+/* ==========================
+   TEXTO DOS CARDS DE PRODUTO (index.html)
+========================== */
+.product-info {
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #232323;
+    padding: 12px 0;
+    text-align: center;
+    gap: 20px;
+}
+
+.product-name {
+    font-size: 1.12rem;
+    font-weight: 600;
+    color: #232323;
+    margin: 6px 0 2px 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    letter-spacing: 0.2px;
+    padding: 5px 0;
+}
+
+.product-id {
+    font-size: 0.96rem;
+    color: #555;
+    margin: 0;
+    padding: 5px 0;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.product-serial {
+    font-size: 0.98rem;
+    color: #444;
+    margin: 0;
+    padding: 5px 0;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.product-quantity {
+    font-size: 1rem;
+    color: #222;
+    font-weight: 500;
+    margin: 0;
+    padding: 5px 0;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+.product-expiration {
+    font-size: 0.80rem;
+    color: #b22222;
+    margin: 0 0 4px 0;
+    padding: 5px 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-weight: 500;
+}
